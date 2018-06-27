@@ -106,3 +106,57 @@
     @content;
   }
 }
+
+
+@mixin media-query($point) {
+	@if($point == xs) {
+		@include breakpoint($rh-global--grid-breakpoint--xs, $no-query: true) {
+			@content;
+		}
+	}
+	@elseif($point == sm) {
+		@include breakpoint($rh-global--grid-breakpoint--sm, $no-query: true) {
+			@content;
+		}
+	}
+	@elseif($point == md) {
+		@include breakpoint($rh-global--grid-breakpoint--md, $no-query: true) {
+			@content;
+		}
+	}
+	@elseif($point == lg) {
+		@include breakpoint($rh-global--grid-breakpoint--lg, $no-query: true) {
+			@content;
+		}
+	}
+	@elseif($point == xl) {
+		@include breakpoint($rh-global--grid-breakpoint--xl, $no-query: true) {
+			@content;
+		}
+	}
+	@elseif($point == xs_max) {
+		@include breakpoint(max_width $rh-global--grid-breakpoint--xs, $no-query: true) {
+			@content;
+		}
+	}
+	@elseif($point == sm_max) {
+		@include breakpoint(max_width $rh-global--grid-breakpoint--sm, $no-query: true) {
+			@content;
+		}
+	}
+	@elseif($point == md_max) {
+		@include breakpoint(max_width $rh-global--grid-breakpoint--md, $no-query: true) {
+			@content;
+		}
+	}
+	@elseif($point == lg_max) {
+		@include breakpoint(max_width $rh-global--grid-breakpoint--lg, $no-query: true) {
+			@content;
+		}
+	}
+	@elseif($point == xl_max) {
+		@include breakpoint(max_width $rh-global--grid-breakpoint--xl, $no-query: true) {
+			@content;
+		}
+	}
+}
