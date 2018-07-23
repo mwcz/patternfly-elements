@@ -1,32 +1,223 @@
+/*
+  # Theming CSS Vars
+
+  ## Base Theme
+
+  --rh-theme--focus--Outline
+  --rh-theme--animation-timing
+
+  ## RH Button Specifc
+
+  --rh-button--Padding
+  --rh-button--FontSize
+  --rh-button--LineHeight
+  --rh-button--BorderWidth
+  --rh-button--BorderRadius
+  --rh-button--theme--animation-speed
+
+  --rh-button--theme--default-color--active--Background
+  --rh-button--theme--default-color--active--Color
+
+  --rh-button--theme--default-color--Background
+  --rh-button--theme--default-color--Color
+  --rh-button--theme--default-color--hover--Background
+  --rh-button--theme--default-color--hover--Color
+  --rh-button--theme--default-color--BorderColor
+  --rh-button--theme--default-color--hover--BorderColor
+
+  --rh-button--theme--primary-color--Background
+  --rh-button--theme--primary-color--Color
+  --rh-button--theme--primary-color--hover--Background
+  --rh-button--theme--primary-color--hover--Color
+  --rh-button--theme--primary-color--BorderColor
+  --rh-button--theme--primary-color--hover--BorderColor
+
+  --rh-button--theme--secondary-color--Background
+  --rh-button--theme--secondary-color--Color
+  --rh-button--theme--secondary-color--hover--Background
+  --rh-button--theme--secondary-color--hover--Color
+  --rh-button--theme--secondary-color--BorderColor
+  --rh-button--theme--secondary-color--hover--BorderColor
+
+  --rh-button--theme--accent-color--Background
+  --rh-button--theme--accent-color--Color
+  --rh-button--theme--accent-color--hover--Background
+  --rh-button--theme--accent-color--hover--Color
+  --rh-button--theme--accent-color--BorderColor
+  --rh-button--theme--accent-color--hover--BorderColor
+*/
+
 @import "../../rh-sass/rh-sass";
+
+// Local SASS vars
+$rh-global--button--Padding: $rh-global--spacer--xs $rh-global--spacer !default;
+$rh-global--focus--Outline: 0 0 0 2px lighten($rh-global--link-color, 20%) !default;
+
+$rh-button-variants: (
+  'default': (
+    'bg':         var(--rh-button--theme--default-color--Background, $rh-global--color--gray3),
+    'text':       var(--rh-button--theme--default-color--Color, $rh-global--text-color),
+    'bgHover':	  var(--rh-button--theme--default-color--hover--Background, darken($rh-global--color--gray3, 15%)),
+    'textHover':  var(--rh-button--theme--default-color--hover--Color, $rh-global--text-color),
+    'border':     var(--rh-button--theme--default-color--BorderColor, $rh-global--color--gray10),
+    'borderHover':var(--rh-button--theme--default-color--hover--BorderColor, darken($rh-global--color--gray10, 15%))
+  ),
+	'primary': (
+		'bg':         var(--rh-button--theme--primary-color--Background, $rh-global--ui-element-color),
+    'text':       var(--rh-button--theme--primary-color--Color, $rh-global--color--white),
+    'bgHover':	  var(--rh-button--theme--primary-color--hover--Background, darken($rh-global--ui-element-color, 15%)),
+    'textHover':  var(--rh-button--theme--primary-color--hover--Color, $rh-global--color--white),
+    'border':     var(--rh-button--theme--primary-color--BorderColor, $rh-global--ui-element-color),
+    'borderHover':var(--rh-button--theme--primary-color--hover--BorderColor, darken($rh-global--ui-element-color, 15%))
+	),
+  'secondary': (
+		'bg':         var(--rh-button--theme--secondary-color--Background, $rh-global--color--gray10),
+    'text':       var(--rh-button--theme--secondary-color--Color, $rh-global--color--white),
+    'bgHover':	  var(--rh-button--theme--secondary-color--hover--Background, darken($rh-global--color--gray10, 15%)),
+    'textHover':  var(--rh-button--theme--secondary-color--hover--Color, $rh-global--color--white),
+    'border':     var(--rh-button--theme--secondary-color--BorderColor, $rh-global--color--gray10),
+    'borderHover':var(--rh-button--theme--secondary-color--hover--BorderColor, darken($rh-global--color--gray10, 15%))
+	),
+  'accent': (
+		'bg':         var(--rh-button--theme--accent-color--Background, $rh-global--color--green-verde),
+    'text':       var(--rh-button--theme--accent-color--Color, $rh-global--color--white),
+    'bgHover':	  var(--rh-button--theme--accent-color--hover--Background, darken($rh-global--color--green-verde, 15%)),
+    'textHover':  var(--rh-button--theme--accent-color--hover--Color, $rh-global--color--white),
+    'border':     var(--rh-button--theme--accent-color--BorderColor, $rh-global--color--green-verde),
+    'borderHover':var(--rh-button--theme--accent-color--hover--BorderColor, darken($rh-global--color--green-verde, 15%))
+	)
+);
 
 :host {
   display: inline-block;
 }
 
+@mixin make-rh-button-variants($variant-array) {
+  @each $variant, $value in $variant-array {
+    $bg: map-get(map-get($variant-array, $variant), 'bg');
+    $text: map-get(map-get($variant-array, $variant), 'text');
+    $bgHover: map-get(map-get($variant-array, $variant), 'bgHover');
+    $textHover: map-get(map-get($variant-array, $variant), 'textHover');
+    $border: map-get(map-get($variant-array, $variant), 'border');
+    $borderHover: map-get(map-get($variant-array, $variant), 'borderHover');
+
+    @if $variant == 'default' {
+      :host button {
+        background: $bg;
+        color: $text;
+
+        &:hover,
+        &:focus {
+          background: $bgHover;
+          color: $textHover;
+        }
+      }
+
+      :host([unfilled]) button {
+        background: transparent !important;
+        color: $border;
+
+        &:hover,
+        &:focus {
+          background: $bgHover !important;
+          color: $textHover;
+        }
+      }
+
+      :host([inverted]) button {
+        background: $rh-global--color--white; // Might need to be a CSS Var
+        color: $border;
+
+        &:hover,
+        &:focus {
+          background: $bgHover;
+          color: $textHover;
+        }
+      }
+
+      :host([bordered]) button {
+        border-color: $border;
+
+        &:hover,
+        &:focus {
+          border-color: $borderHover;
+        }
+      }
+
+      :host button:active,
+      :host([unfilled]) button:active,
+      :host([inverted]) button:active,
+      :host([bordered]) button:active {
+        background: var(--rh-button--theme--default-color--active--Background, $rh-global--color--purple) !important;
+        color: var(--rh-button--theme--default-color--active--Color, $rh-global--color--white) !important;
+      }
+    } @else {
+      :host([theme="#{$variant}"]) button {
+        background: $bg;
+        color: $text;
+
+        &:hover,
+        &:focus {
+          background: $bgHover;
+          color: $textHover;
+        }
+      }
+
+      :host([theme="#{$variant}"][unfilled]) button {
+        background: transparent !important;
+        color: $border;
+
+        &:hover,
+        &:focus {
+          background: $bgHover !important;
+          color: $textHover;
+        }
+      }
+
+      :host([theme="#{$variant}"][inverted]) button {
+        background: $rh-global--color--white; // Might need to be a CSS Var
+        color: $border;
+
+        &:hover,
+        &:focus {
+          background: $bgHover;
+          color: $textHover;
+        }
+      }
+
+      :host([theme="#{$variant}"][bordered]) button {
+        border-color: $border;
+
+        &:hover,
+        &:focus {
+          border-color: $borderHover;
+        }
+      }
+
+      :host([theme="#{$variant}"]) button:active,
+      :host([theme="#{$variant}"][unfilled]) button:active,
+      :host([theme="#{$variant}"][inverted]) button:active,
+      :host([theme="#{$variant}"][bordered]) button:active {
+        background: var(--rh-button--theme--default-color--active--Background, $rh-global--color--purple) !important;
+        color: var(--rh-button--theme--default-color--active--Color, $rh-global--color--white) !important;
+      }
+    }
+  }
+}
+
 :host button {
-  padding: 0 var(--rhe-theme--spacer, $rh-global--spacer);
-  font-size: var(--rhe-theme--FontSize, $rh-global--FontSize);
-  line-height: var(--rhe-theme--spacer--lg, $rh-global--spacer--lg);
-  border: 1px solid transparent;
+  padding: var(--rh-button--Padding, $rh-global--button--Padding);
+  font-size: var(--rh-button--FontSize, $rh-global--FontSize);
+  line-height: var(--rh-button--LineHeight, $rh-global--LineHeight--sm);
+  border: var(--rh-button--BorderWidth, $rh-global--border--BorderWidth) solid transparent;
+  border-radius: var(--rh-button--BorderRadius, $rh-global--button-border--BorderRadius);
+  transition: background var(--rh-button--theme--animation-speed, 250ms) var(--rh-theme--animation-timing, $rh-global--animation-timing);
   cursor: pointer;
 
-  border-radius: var(--rhe-theme--button-border--BorderRadius, $rh-global--button-border--BorderRadius);
-  background: var(--rh-button--theme--default-color--Background, $rh-global--color--gray2);
-  color: var(--rh-button--theme--default-color--Color, $rh-global--text-color);
+  &:focus {
+    outline: none;
+    box-shadow: var(--rh-theme--focus--Outline, $rh-global--focus--Outline);
+  }
 }
 
-:host button:hover {
-  background: var(--rh-button--theme--default-color--hover--Background, $rh-global--color--gray4);
-  color: var(--rh-button--theme--default-color--hover--Color, $rh-global--text-color);
-}
-
-:host(.primary) button {
-  background: var(--rh-button--theme--primary-color--Background, $rh-global--ui-element-color);
-  color: var(--rh-button--theme--primary-color--Color, $rh-global--color--white);
-}
-
-:host(.primary) button:hover {
-  background: var(--rh-button--theme--primary-color--hover--Background, $rh-global--ui-element-color--hover);
-  color: var(--rh-button--theme--primary-color--hover--Color, $rh-global--color--white);
-}
+@include make-rh-button-variants($rh-button-variants);
