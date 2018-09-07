@@ -1,8 +1,13 @@
-@import "rh-base-sass/rh-base";
+@import "../../elements/rh-sass/variables/colors";
 @import "sass/colors";
-@import "sass/layout";
-@import "sass/style";
-@import "sass/typography";
+//@import "sass/layout";
+//@import "sass/style";
+//@import "sass/typography";
+//
 
-// RHElements Specifics
-@import "sass/elements/rh-card";
+:root {
+  @each $cssvar, $sassvar in $palette {
+
+    #{$cssvar}: $sassvar;
+  }
+}

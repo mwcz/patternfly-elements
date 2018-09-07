@@ -8,10 +8,11 @@
     <script src="/@webcomponents/webcomponentsjs/custom-elements-es5-adapter.js"></script>
     <script src="/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.5/require.min.js"></script>
-    <script>require(['../rh-cta.umd.js'])</script>
+    <script>
+      require(['../rh-cta.umd.js'])
+    </script>
 
     <link rel="stylesheet" href="http://overpass-30e2.kxcdn.com/overpass.css" />
-
     <style>
       body {
         font: 16px/1.5 Overpass, Arial, sans-sans-serif;
@@ -36,13 +37,7 @@
       }
     </style>
     <style>
-    :root {
-      /* --rh-theme--color--ui-accent: green;
-      --rh-theme--color--ui-accent--hover: darkgreen;
-      --rh-theme--color--ui-accent--visited: darkgreen;
-      --rh-theme--color--ui-accent--focus: darkgreen;
-      --rh-theme--color--ui-accent--text: white; */
-    }
+
     </style>
   </head>
   <body>
@@ -55,63 +50,59 @@
       <rh-cta priority="secondary"><a href="#">Secondary</a></rh-cta>
     </p>
 
-    <h2>Palette: Base</h2>
+<hr>
+<h1>Palette overrides</h1>
+    <h2>Base</h2>
     <p>
       <rh-cta palette="base"><a href="#">Default</a></rh-cta>
       <rh-cta priority="primary" palette="base"><a href="#">Primary</a></rh-cta>
       <rh-cta priority="secondary" palette="base"><a href="#">Secondary</a></rh-cta>
     </p>
 
-    <h2>Palette: Complement</h2>
+    <h2>Complement</h2>
     <p>
       <rh-cta palette="complement"><a href="#">Default</a></rh-cta>
       <rh-cta priority="primary" palette="complement"><a href="#">Primary</a></rh-cta>
       <rh-cta priority="secondary" palette="complement"><a href="#">Secondary</a></rh-cta>
     </p>
 
-    <h2>Palette: Accent</h2>
+    <h2>Accent</h2>
     <p>
       <rh-cta palette="accent"><a href="#">Default</a></rh-cta>
       <rh-cta priority="primary" palette="accent"><a href="#">Primary</a></rh-cta>
       <rh-cta priority="secondary" palette="accent"><a href="#">Secondary</a></rh-cta>
     </p>
 
-    <h2>"On Saturated" Defaults</h2>
+<hr>
+<h1>theme="inverse"</h1>
+    <h2>Defaults</h2>
     <p class="inverted-demo">
-      <rh-cta on-saturated><a href="#">Default</a></rh-cta>
-      <rh-cta priority="primary" on-saturated><a href="#">Primary</a></rh-cta>
-      <rh-cta priority="secondary" on-saturated><a href="#">Secondary</a></rh-cta>
+      <rh-cta theme="inverse"><a href="#">Default</a></rh-cta>
+      <rh-cta priority="primary" theme="inverse"><a href="#">Primary</a></rh-cta>
+      <rh-cta priority="secondary" theme="inverse"><a href="#">Secondary</a></rh-cta>
     </p>
 
-    <h2>"On Saturated" Palette: Base</h2>
+    <h2>Palette: Base - you're on your own since you're calling the shots</h2>
     <p class="inverted-demo">
-      <rh-cta palette="base" on-saturated><a href="#">Default</a></rh-cta>
-      <rh-cta priority="primary" palette="base" on-saturated><a href="#">Primary</a></rh-cta>
-      <rh-cta priority="secondary" palette="base" on-saturated><a href="#">Secondary</a></rh-cta>
+      <rh-cta palette="base" theme="inverse"><a href="#">Default</a></rh-cta>
+      <rh-cta priority="primary" palette="base" theme="inverse"><a href="#">Primary</a></rh-cta>
+      <rh-cta priority="secondary" palette="base" theme="inverse"><a href="#">Secondary</a></rh-cta>
     </p>
 
-    <h2>"On Saturated" Palette: Complement</h2>
+    <h2>Palette: Complement - you're on your own since you're calling the shots</h2>
     <p class="inverted-demo">
-      <rh-cta palette="complement" on-saturated><a href="#">Default</a></rh-cta>
-      <rh-cta priority="primary" palette="complement" on-saturated><a href="#">Primary</a></rh-cta>
-      <rh-cta priority="secondary" palette="complement" on-saturated><a href="#">Secondary</a></rh-cta>
+      <rh-cta palette="complement" theme="inverse"><a href="#">Default</a></rh-cta>
+      <rh-cta priority="primary" palette="complement" theme="inverse"><a href="#">Primary</a></rh-cta>
+      <rh-cta priority="secondary" palette="complement" theme="inverse"><a href="#">Secondary</a></rh-cta>
     </p>
 
-    <h2>"On Saturated" Palette: Accent</h2>
+    <h2>Palette: Accent - you're on your own since you're calling the shots</h2>
     <p class="inverted-demo">
-      <rh-cta palette="accent" on-saturated><a href="#">Default</a></rh-cta>
-      <rh-cta priority="primary" palette="accent" on-saturated><a href="#">Primary</a></rh-cta>
-      <rh-cta priority="secondary" palette="accent" on-saturated><a href="#">Secondary</a></rh-cta>
+      <rh-cta palette="accent" theme="inverse"><a href="#">Default</a></rh-cta>
+      <rh-cta priority="primary" palette="accent" theme="inverse"><a href="#">Primary</a></rh-cta>
+      <rh-cta priority="secondary" palette="accent" theme="inverse"><a href="#">Secondary</a></rh-cta>
     </p>
 
 
-
-    <h2>"Broadcasted" Default CTA Theory</h2>
-    <em>This may be different or not work when inside :host</em>. Also doesn't seem to work in IE11.
-    <p class="inverted-demo">
-      <span style="--rh-broadcasted--color--ui-link: green; --rh-broadcasted--color--ui-link--visited: green;">
-        <rh-cta><a href="#">Default</a></rh-cta>
-      </span>
-    </p>
   </body>
 </html>
