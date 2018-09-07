@@ -15,7 +15,9 @@ $rh-cta--solid--padding-x:                  32px; //$rh-global--spacer--lg;
 $rh-cta--animation-timing:                  $rh-global--animation-timing;
 
 
-// Default CTA colors
+/// ===========================================================================
+/// DEFUALT CTA
+/// ===========================================================================
 :host {
   --rh-cta--main:                     #{rh-var(--rh-theme--color--ui-link)};
   --rh-cta--main--hover:              #{rh-var(--rh-theme--color--ui-link--hover)};
@@ -23,12 +25,7 @@ $rh-cta--animation-timing:                  $rh-global--animation-timing;
   --rh-cta--main--visited:            #{rh-var(--rh-theme--color--ui-link--visited)};
   --rh-cta--aux:                      transparent;
   --rh-cta--aux--hover:               transparent;
-}
 
-/// ===========================================================================
-/// DEFUALT CTAs
-/// ===========================================================================
-:host {
   display: inline-block;
   font-weight: bold;
 
@@ -44,6 +41,7 @@ $rh-cta--animation-timing:                  $rh-global--animation-timing;
     }
   }
 
+  // TODO
   //& ::slotted(a:visited) {
   //  color: var(--rh-cta--main--visited);
   //  &::after {
