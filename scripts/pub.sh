@@ -14,6 +14,7 @@ trap ctrl_c INT
 
 ctrl_c() {
   echo "ctrl-c detected"
+  exit 1
 }
 
 checkDir() {
