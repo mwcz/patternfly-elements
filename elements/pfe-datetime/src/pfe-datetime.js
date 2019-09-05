@@ -65,6 +65,7 @@ class PfeDatetime extends PFElement {
   }
 
   attributeChangedCallback(attr, oldVal, newVal) {
+    console.log('change');
     this[attr] = newVal;
   }
 
