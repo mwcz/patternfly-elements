@@ -134,6 +134,6 @@ gitTag
 removeIgnoredFiles
 pushToOrigin
 resetMaster
-npmPublish
+# npmPublish
 handlePR
 goodbye
